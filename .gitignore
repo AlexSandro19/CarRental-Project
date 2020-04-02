@@ -1,0 +1,5 @@
+#InteliJ class files
+*.class
+
+#Log file
+*.log
