@@ -3,6 +3,10 @@ package com.company;
     import java.util.Scanner;
     public class Menu {
         static Scanner console=new Scanner(System.in);
+        public Menu()
+            {
+                mainMenu();
+            }
         //Main UI methods
         public void mainMenu()
         {
@@ -54,19 +58,19 @@ package com.company;
             switch (choice)
             {
                 case 1:
-                    //createCar();
+                    createCar();
                     carsMenu();
                     break;
                 case 2:
-                    //displayCar();
+                    displayCar();
                     carsMenu();
                     break;
                 case 3:
-                    //deleteCar();
+                    deleteCar();
                     carsMenu();
                     break;
                 case 4:
-                    //updateCar
+                    updateCar();
                     carsMenu();
                     break;
                 case 5:
@@ -77,6 +81,7 @@ package com.company;
             }
 
         }
+
         public void customersMenu()
         {
             System.out.println("|_____________________________|");
@@ -96,19 +101,19 @@ package com.company;
             switch (choice)
             {
                 case 1:
-                    //createCustomer();
+                    createCustomer();
                     customersMenu();
                     break;
                 case 2:
-                    //displayCustomer();
+                    displayCustomer();
                     customersMenu();
                     break;
                 case 3:
-                    //deleteCustomer();
+                    deleteCustomer();
                     customersMenu();
                     break;
                 case 4:
-                    //updateCustomer();
+                    updateCustomer();
                     customersMenu();
                     break;
                 case 5:
@@ -139,19 +144,19 @@ package com.company;
             switch (choice)
             {
                 case 1:
-                    //createRental();
+                    createRental();
                     rentalMenu();
                     break;
                 case 2:
-                    //displayRental();
+                    displayRental();
                     rentalMenu();
                     break;
                 case 3:
-                    //deleteRental();
+                    deleteRental();
                     rentalMenu();
                     break;
                 case 4:
-                    //updateRental
+                    updateRental();
                     rentalMenu();
                     break;
                 case 5:
@@ -166,60 +171,55 @@ package com.company;
         //Methods for displaying, creating, deleting, updating cars
         public void createCar()
         {
-
+            Main.getController().createCar();
 
         }
         public void displayCar()
         {
-
+        Main.getController().displayCar();
         }
         public void deleteCar()
         {
-
+        Main.getController().deleteCar();
         }
         public  void updateCar()
         {
-
-
+            Main.getController().updateCar();
         }
         //Methods for displaying, creating, deleting, updating customers
         public void createCustomer()
         {
-
-
+        Main.getController().createCustomer();
         }
         public void displayCustomer()
         {
-
+        Main.getController().displayCustomer();
         }
         public void deleteCustomer()
         {
-
+        Main.getController().deleteCustomer();
         }
         public  void updateCustomer()
         {
-
-
+            Main.getController().updateCustomer();
         }
 
         //Methods for displaying, creating, deleting, updating rentals
         public void createRental()
         {
-
-
+            Main.getController().createRental();
         }
         public void displayRental()
         {
-
+            Main.getController().displayRental();
         }
         public void deleteRental()
         {
-
+            Main.getController().deleteRental();
         }
         public  void updateRental()
         {
-
-
+            Main.getController().updateRental();
         }
     }
 
