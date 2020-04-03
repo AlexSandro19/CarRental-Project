@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class DBconnection {
         private static String url = "jdbc:mysql://localhost:3306/carrental?characterEncoding=latin1&useConfigs=maxPerformance\n";
-        private static String username = "";
-        private  static String password = "";
+        private static String username = "root";
+        private  static String password = "asdfzxcv123";
         private static String schema="";
 
     public static ResultSet sendQuery(String query) {
@@ -13,7 +13,6 @@ public class DBconnection {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, username, password);
             Statement st = con.createStatement();
-            st.execute("USE " + schema + ";");
             ResultSet rs = st.executeQuery(query); // Query is executed.
             return rs; // The ResultSet is being returned.
         } catch (SQLException | ClassNotFoundException e) {
@@ -28,7 +27,6 @@ public class DBconnection {
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection(url, username, password);
         Statement st = con.createStatement();
-        st.execute("USE " + schema + ";");
         boolean rs = st.execute(query); // Query is executed.
         return rs; // The ResultSet is being returned.
     } catch (SQLException | ClassNotFoundException e) {
