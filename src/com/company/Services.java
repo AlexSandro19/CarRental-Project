@@ -21,19 +21,19 @@ public class Services {
         int mileage=console.nextInt();
         System.out.println("Enter car type: ");
         int car_type_id=console.nextInt();
-        DBconnection.executeQuery("insert into cars VALUES\n"+
-                "(" + brand_id + "," + reg_num + ",\"" + reg_date + "\", " + mileage + ", " +
-                car_type_id + ",");
+        DBconnection.executeQuery("INSERT INTO cars(brandModel_id,reg_num,reg_date,mileage,carType_id)\n VALUES"+
+                "(" + brand_id + ",\"" + reg_num + "\",\"" + reg_date + "\", " + mileage + ", " + car_type_id + ");");
+
     }
 
     public void displayCar() {
+        //DISPLAT MODELS !!!! JUST FOR SHOW !!!!
         ResultSet rs=DBconnection.sendQuery("SELECT * FROM brandModels");
         try {
             while(rs.next())
             {
                 System.out.println("|brand ID: "+rs.getString("brandModel_id")+
                         "|Brand: "+rs.getString("brand")+"|model"+rs.getString("model"));
-
             }
         }
         catch (SQLException e)
@@ -50,7 +50,6 @@ public class Services {
 
 
     }
-
     public void createCustomer() {
 
 

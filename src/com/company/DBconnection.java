@@ -6,7 +6,6 @@ public class DBconnection {
         private static String url = "jdbc:mysql://localhost:3306/carrental?characterEncoding=latin1&useConfigs=maxPerformance\n";
         private static String username = "root";
         private  static String password = "asdfzxcv123";
-        private static String schema="";
 
     public static ResultSet sendQuery(String query) {
         try {
@@ -27,6 +26,8 @@ public class DBconnection {
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection(url, username, password);
         Statement st = con.createStatement();
+       // String prepst=""
+       // prepst=con.prepareStatement("INSERT INTO cars(brandModel,reg_num,reg_date,mileage,car_type) Values")
         boolean rs = st.execute(query); // Query is executed.
         return rs; // The ResultSet is being returned.
     } catch (SQLException | ClassNotFoundException e) {
