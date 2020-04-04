@@ -6,11 +6,14 @@ import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Services {
+    //global scanner
     static Scanner console = new Scanner(System.in);
 
+    //empty constructor
     public Services() {
     }
 
+    //Methods to input the SQL Code to DB for retrieving or changing of information for Cars
     public void createCar() {
         /*Method for creating car elements then adding them to the system
         */
@@ -31,7 +34,6 @@ public class Services {
                 "(" + brand_id + ",\"" + reg_num + "\",\"" + reg_date + "\", " + mileage + ", " + car_type_id + ");");
 
     }
-
     public void displayCar() {
         //DISPLAT MODELS !!!! JUST FOR SHOW !!!!
         ResultSet rs=DBconnection.sendQuery("SELECT cars.car_id,brandmodels.brand,brandmodels.model,cars.reg_num,cars.reg_date,cars.mileage, \n" +
@@ -58,7 +60,6 @@ public class Services {
             e.printStackTrace();
         }
     }
-
     public void deleteCar() {
         displayCar();
         System.out.println("Type the ID of the car you want to delete: ");
@@ -70,7 +71,6 @@ public class Services {
             System.out.println("This Car doesn't exist.");
         }
     }
-
     public void updateCar() {
         System.out.println("Which car do you want to change (Select ID)");
         displayCar();
@@ -92,6 +92,8 @@ public class Services {
         System.out.println("Your ID choice was " + choice);
 
     }
+
+    //Methods to input the SQL Code to DB for retrieving or changing of information for Customers
     public void createCustomer() {
         /*
            Method for creating a customer elements in the DB then adding them to the system
@@ -121,7 +123,6 @@ public class Services {
                 "VALUES"+"(\""+first_name+"\",\""+last_name+"\",\""+address+"\","+zip+",\""+number+"\",\""+alt_number+"\",\""+
                 email+"\",\""+driver_license+"\",\""+driver_since+"\");");
     }
-
     public void displayCustomer() {
         ResultSet rs=DBconnection.sendQuery("SELECT customers.customer_id,customers.first_name,customers.last_name,customers.st_address,\n" +
                 "customers.zip,zip_codes.city,zip_codes.country,\n" +
@@ -149,7 +150,6 @@ public class Services {
         }
 
     }
-
     public void deleteCustomer() {
         displayCustomer();
         System.out.println("Type the ID of the Customer you want to delete: ");
@@ -161,12 +161,12 @@ public class Services {
             System.out.println("This Customer doesn't exist.");
         }
     }
-
     public void updateCustomer() {
 
 
     }
 
+    //Methods to input the SQL Code to DB for retrieving or changing of information for Rentals
     public void createRental() {
         System.out.println("Enter renter id: ");
         int renter_id=console.nextInt();
@@ -184,7 +184,6 @@ public class Services {
         DBconnection.executeQuery("INSERT INTO contracts(renter_id,car_id,start_date,end_date,max_km,start_km) \n VALUES "+
                 "("+renter_id+","+customer_id+",\""+start_date+"\",\""+end_date+"\","+max_km+","+start_km+");");
     }
-
     public void displayRental() {
         ResultSet rs=DBconnection.sendQuery("SELECT contracts.contract_id,customers.first_name,customers.last_name,customers.driver_license,cars.reg_num,contracts.start_date,\n" +
                 "contracts.end_date,contracts.max_km,contracts.start_km\n" +
@@ -211,7 +210,6 @@ public class Services {
 
 
     }
-
     public void deleteRental() {
         displayRental();
         System.out.println("Type the ID of the Contract you want to delete: ");
@@ -223,7 +221,18 @@ public class Services {
             System.out.println("This Contract doesn't exist.");
         }
     }
-
     public void updateRental() {
     }
+
+    //Methods to input the SQL Code to DB for retrieving or changing of information for Zips
+    public void createZips(){}
+    public void displayZips(){}
+    public void deleteZips(){}
+    public void updateZips(){}
+
+    //Methods to input the SQL Code to DB for retrieving or changing of information for brands
+    public void createBrands(){}
+    public void displayBrands(){}
+    public void deleteBrands(){}
+    public void updateBrands(){}
 }

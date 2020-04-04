@@ -17,7 +17,8 @@ package com.company;
             System.out.println("|            1.Cars           |");
             System.out.println("|            2.Customer       |");
             System.out.println("|            3.Rentals        |");
-            System.out.println("|            4.Quit           |");
+            System.out.println("|            4.Others         |");
+            System.out.println("|            5.Quit           |");
             System.out.println("|_____________________________|");
             System.out.println("           Enter number...    ");
             int choice = console.nextInt();
@@ -34,8 +35,14 @@ package com.company;
                     rentalMenu();
                     break;
                 case 4:
-                    System.exit(1);
+                    othersMenu();
                     break;
+                case 5:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid user input try again pls");
+                    mainMenu();
             }
 
 
@@ -76,7 +83,9 @@ package com.company;
                 case 5:
                     mainMenu();
                     break;
-
+                default:
+                    System.out.println("Invalid user input try again pls");
+                    carsMenu();
 
             }
 
@@ -119,6 +128,9 @@ package com.company;
                 case 5:
                     mainMenu();
                     break;
+                default:
+                    System.out.println("Invalid user input try again pls");
+                    customersMenu();
 
 
             }
@@ -162,17 +174,124 @@ package com.company;
                 case 5:
                     mainMenu();
                     break;
-
+                default:
+                    System.out.println("Invalid user input try again pls");
+                    rentalMenu();
 
             }
 
         }
+        public void othersMenu()
+        {
+            System.out.println("|_____________________________|");
+            System.out.println("|    Killua Car Dealership    |");
+            System.out.println("|_____________________________|");
+            System.out.println("|           Others Menu       |");
+            System.out.println("|            1.Zips           |");
+            System.out.println("|            2.Brands         |");
+            System.out.println("|            3.Back           |");
+            System.out.println("|_____________________________|");
+            System.out.println("           Enter number...    ");
+            int choice= console.nextInt();
+            switch (choice)
+            {
+                case 1:
+                    zipsMenu();
+                    break;
+                case 2:
+                    brandsMenu();
+                    break;
+                default:
+                    System.out.println("Invalid user input try again pls");
+                    othersMenu();
+            }
 
+        }
+        public void zipsMenu()
+        {
+            System.out.println("|_____________________________|");
+            System.out.println("|    Killua Car Dealership    |");
+            System.out.println("|_____________________________|");
+            System.out.println("|           Zips Menu         |");
+            System.out.println("|            1.Create         |");
+            System.out.println("|            2.Display        |");
+            System.out.println("|            3.Delete         |");
+            System.out.println("|            4.Update         |");
+            System.out.println("|            5.Back           |");
+            System.out.println("|_____________________________|");
+            System.out.println("           Enter number...    ");
+            int choice= console.nextInt();
+            switch (choice)
+            {
+                case 1:
+                    createZips();
+                    zipsMenu();
+                    break;
+                case 2:
+                    displayZips();
+                    zipsMenu();
+                    break;
+                case 3:
+                    deleteZips();
+                    zipsMenu();
+                    break;
+                case 4:
+                    updateZips();
+                    zipsMenu();
+                    break;
+                case 5:
+                    othersMenu();
+                    break;
+                default:
+                    System.out.println("Invalid user input try again pls");
+                    zipsMenu();
+            }
+        }
+        public void brandsMenu()
+        {
+            System.out.println("|_____________________________|");
+            System.out.println("|    Killua Car Dealership    |");
+            System.out.println("|_____________________________|");
+            System.out.println("|           Brands Menu       |");
+            System.out.println("|            1.Create         |");
+            System.out.println("|            2.Display        |");
+            System.out.println("|            3.Delete         |");
+            System.out.println("|            4.Update         |");
+            System.out.println("|            5.Back           |");
+            System.out.println("|_____________________________|");
+            System.out.println("           Enter number...    ");
+            int choice= console.nextInt();
+            switch (choice)
+            {
+                case 1:
+                    createBrands();
+                    brandsMenu();
+                    break;
+                case 2:
+                    displayBrands();
+                    brandsMenu();
+                    break;
+                case 3:
+                    deleteBrands();
+                    brandsMenu();
+                    break;
+                case 4:
+                    updateBrands();
+                    brandsMenu();
+                    break;
+                case 5:
+                    othersMenu();
+                    break;
+                default:
+                    System.out.println("Invalid user input try again pls");
+                    brandsMenu();
+            }
+
+        }
         //Methods for displaying, creating, deleting, updating cars
         public void createCar()
         {
             Main.getController().createCar();
-
         }
         public void displayCar()
         {
@@ -224,6 +343,29 @@ package com.company;
         {
             Main.getController().updateRental();
         }
+        //Methods for displaying, creating, deleting, updating zips
+        public void createZips()
+        {
+            Main.getController().createZips();
+        }
+        public void displayZips()
+        {
+            Main.getController().displayZips();
+        }
+        public void deleteZips()
+        {
+            Main.getController().deleteZips();
+        }
+        public void updateZips()
+        {
+            Main.getController().updateZips();
+        }
+        //Methods for displaying, creating, deleting, updating brands
+        public void createBrands(){Main.getController().updateBrands();}
+        public void  displayBrands(){Main.getController().displayBrands();}
+        public  void deleteBrands(){Main.getController().deleteBrands();}
+        public void updateBrands(){Main.getController().updateBrands();}
+
     }
 
 

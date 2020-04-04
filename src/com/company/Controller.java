@@ -54,4 +54,14 @@ public class Controller {
     public void updateRental() {
         services.updateRental();
     }
+
+    public void createZips(){services.createZips();}
+    public void  displayZips(){services.displayZips();}
+    public void deleteZips(){services.deleteZips();}
+    public void updateZips(){services.updateZips();}
+
+    public void createBrands(){services.createBrands();}
+    public void displayBrands(){services.displayBrands();}
+    public void deleteBrands(){services.deleteBrands();}
+    public void updateBrands(){services.updateBrands();}
 }
