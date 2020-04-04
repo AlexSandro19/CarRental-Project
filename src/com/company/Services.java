@@ -2,6 +2,7 @@ package com.company;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Services {
@@ -71,7 +72,24 @@ public class Services {
     }
 
     public void updateCar() {
+        System.out.println("Which car do you want to change (Select ID)");
+        displayCar();
+        String choice_ID = console.next();
+        System.out.println("You Chose To Change "+ choice_ID);
 
+        System.out.println("|_____________________________|");
+        System.out.println("|    Which Value To Update    |");
+        System.out.println("|_____________________________|");
+        System.out.println("|                             |");
+        System.out.println("|       1.Brand ID            |");
+        System.out.println("|       2.Registration Number |");
+        System.out.println("|       3.Registration Date   |");
+        System.out.println("|       4.Mileage             |");
+        System.out.println("|       5.Car Type            |");
+        System.out.println("|_____________________________|");
+        System.out.println("           Enter number...    ");
+        int choice = console.nextInt();
+        System.out.println("Your ID choice was " + choice);
 
     }
     public void createCustomer() {

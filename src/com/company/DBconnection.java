@@ -5,7 +5,7 @@ import java.sql.*;
 public class DBconnection {
         private static String url = "jdbc:mysql://localhost:3306/carrental?characterEncoding=latin1&useConfigs=maxPerformance\n";
         private static String username = "root";
-        private  static String password = "1234";
+        private  static String password = "caledonia10";
 
     public static ResultSet sendQuery(String query) {
         try {
