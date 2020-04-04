@@ -59,7 +59,15 @@ public class Services {
     }
 
     public void deleteCar() {
-
+        displayCar();
+        System.out.println("Type the ID of the car you want to delete: ");
+        int user_input = console.nextInt();
+        boolean deleted = DBconnection.executeQuery("DELETE FROM cars WHERE car_id = " + user_input + ";");
+        if (deleted){
+            System.out.println("Car with ID = " + user_input + " was deleted.");
+        }else{
+            System.out.println("This Car doesn't exist.");
+        }
     }
 
     public void updateCar() {
@@ -125,7 +133,15 @@ public class Services {
     }
 
     public void deleteCustomer() {
-
+        displayCustomer();
+        System.out.println("Type the ID of the Customer you want to delete: ");
+        int user_input = console.nextInt();
+        boolean deleted = DBconnection.executeQuery("DELETE FROM customers WHERE customer_id = " + user_input + ";");
+        if (deleted){
+            System.out.println("Customer with ID = " + user_input + " was deleted.");
+        }else{
+            System.out.println("This Customer doesn't exist.");
+        }
     }
 
     public void updateCustomer() {
@@ -179,7 +195,15 @@ public class Services {
     }
 
     public void deleteRental() {
-
+        displayRental();
+        System.out.println("Type the ID of the Contract you want to delete: ");
+        int user_input = console.nextInt();
+        boolean deleted = DBconnection.executeQuery("DELETE FROM contracts WHERE contract_id = " + user_input + ";");
+        if (deleted){
+            System.out.println("Contract with ID = " + user_input + " was deleted.");
+        }else{
+            System.out.println("This Contract doesn't exist.");
+        }
     }
 
     public void updateRental() {

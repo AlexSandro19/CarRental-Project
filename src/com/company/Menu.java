@@ -180,7 +180,8 @@ package com.company;
         }
         public void deleteCar()
         {
-        Main.getController().deleteCar();
+            System.out.println();
+            Main.getController().deleteCar();
         }
         public  void updateCar()
         {
@@ -197,7 +198,8 @@ package com.company;
         }
         public void deleteCustomer()
         {
-        Main.getController().deleteCustomer();
+            System.out.println();
+            Main.getController().deleteCustomer();
         }
         public  void updateCustomer()
         {
@@ -215,6 +217,7 @@ package com.company;
         }
         public void deleteRental()
         {
+            System.out.println();
             Main.getController().deleteRental();
         }
         public  void updateRental()
