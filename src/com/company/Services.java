@@ -33,12 +33,23 @@ public class Services {
 
     public void displayCar() {
         //DISPLAT MODELS !!!! JUST FOR SHOW !!!!
-        ResultSet rs=DBconnection.sendQuery("SELECT * FROM brandModels");
+        ResultSet rs=DBconnection.sendQuery("SELECT cars.car_id,brandmodels.brand,brandmodels.model,cars.reg_num,cars.reg_date,cars.mileage, \n" +
+                "cartypes.car_type, cartypes.transmission,cartypes.air_con,cartypes.eng_volume,\n" +
+                "cartypes.hp,cartypes.seats\n" +
+                "FROM cars \n" +
+                "join\n" +
+                "cartypes on cartypes.carType_id = cars.carType_id\n" +
+                "join brandmodels on cars.brandModel_id = brandmodels.brandModel_id\n" +
+                "ORDER BY car_id;");
         try {
             while(rs.next())
             {
-                System.out.println("|brand ID: "+rs.getString("brandModel_id")+
-                        "|Brand: "+rs.getString("brand")+"|model"+rs.getString("model"));
+                System.out.println("|ID: "+rs.getString("car_id")+"|Brand: "+rs.getString("brand")+"|Model: "+rs.getString("model")+
+                        "|Reg.Nr: "+rs.getString("reg_num")+"|Reg.Date"+rs.getString("reg_date")+
+                        "|Mileage: " +rs.getString("mileage")+"|Car Type: " +rs.getString("car_type")+
+                        "|Transmision:  " +rs.getString("transmission")+"|Air condition: " +rs.getString("air_con")+
+                        "|Engine Volume: " +rs.getString("eng_volume")+"|Horse Power: " +rs.getString("hp")+
+                        "|Seats Nr: " +rs.getString("seats"));
             }
         }
         catch (SQLException e)
@@ -86,6 +97,30 @@ public class Services {
     }
 
     public void displayCustomer() {
+        ResultSet rs=DBconnection.sendQuery("SELECT customers.customer_id,customers.first_name,customers.last_name,customers.st_address,\n" +
+                "customers.zip,zip_codes.city,zip_codes.country,\n" +
+                "customers.mobile_phone,customers.addit_phone,customers.email,customers.driver_license,customers.driver_since\n" +
+                "FROM customers \n" +
+                "join\n" +
+                "zip_codes\n" +
+                "ON customers.zip = zip_codes.zip\n"+
+                "ORDER BY customer_id;");
+        try {
+            while(rs.next())
+            {
+                System.out.println("|ID: "+rs.getString("customer_id")+"|First name: "+rs.getString("first_name")+
+                        "|Last name: "+rs.getString("last_name")+
+                        "|Adress: "+rs.getString("st_address")+"|Zip code"+rs.getString("zip")+
+                        "|City: " +rs.getString("city")+"|Country: " +rs.getString("country")+
+                        "|Phone:  " +rs.getString("mobile_phone")+"|Extra phone: " +rs.getString("addit_phone")+
+                        "|E-mail: " +rs.getString("email")+"|Driver licence: " +rs.getString("driver_license")+
+                        "|Driver since: " +rs.getString("driver_since"));
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
 
     }
 
@@ -117,6 +152,29 @@ public class Services {
     }
 
     public void displayRental() {
+        ResultSet rs=DBconnection.sendQuery("SELECT contracts.contract_id,customers.first_name,customers.last_name,customers.driver_license,cars.reg_num,contracts.start_date,\n" +
+                "contracts.end_date,contracts.max_km,contracts.start_km\n" +
+                "FROM contracts\n" +
+                "JOIN\n" +
+                "customers ON customers.customer_id = contracts.renter_id\n" +
+                "JOIN \n" +
+                "cars ON cars.car_id = contracts.car_id\n" +
+                "ORDER BY contract_id;\n");
+        try {
+            while(rs.next())
+            {
+                System.out.println("|ID: "+rs.getString("contract_id")+"|First name: "+rs.getString("first_name")+
+                        "|Last name: "+rs.getString("last_name")+ "|Licence: "+rs.getString("driver_license")+
+                        "|Car reg.nr: "+rs.getString("reg_num")+"|From "+rs.getString("start_date")+
+                                "|End date: " +rs.getString("end_date")+"|Available for: " +rs.getString("max_km")+ "km"+
+                        "|Starting point: " +rs.getString("start_km"));
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
 
     }
 
