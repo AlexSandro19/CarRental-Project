@@ -72,24 +72,51 @@ public class Services {
         }
     }
     public void updateCar() {
-        System.out.println("Which car do you want to change (Select ID)");
+        System.out.println("Choose The ID of the car you want to update");
         displayCar();
         String choice_ID = console.next();
         System.out.println("You Chose To Change "+ choice_ID);
-
         System.out.println("|_____________________________|");
         System.out.println("|    Which Value To Update    |");
         System.out.println("|_____________________________|");
         System.out.println("|                             |");
-        System.out.println("|       1.Brand ID            |");
-        System.out.println("|       2.Registration Number |");
-        System.out.println("|       3.Registration Date   |");
-        System.out.println("|       4.Mileage             |");
-        System.out.println("|       5.Car Type            |");
+        System.out.println("|    1.Registration Number    |");
+        System.out.println("|    2.Registration Date      |");
+        System.out.println("|    3.Mileage                |");
+        System.out.println("|    4.Cancel                 |");
         System.out.println("|_____________________________|");
         System.out.println("           Enter number...    ");
         int choice = console.nextInt();
-        System.out.println("Your ID choice was " + choice);
+        System.out.println("Your choice was " + choice);
+
+        switch (choice)
+        {
+            case 1:
+                //Registration Number
+                System.out.println("Type The New Registration Number");
+                String newRegNumber = console.next();
+                DBconnection.executeQuery("UPDATE cars SET reg_num = '" + newRegNumber +"' WHERE car_id = " + choice_ID + ";");
+                System.out.println("The Car with the id " + choice_ID + " reg_number was updated" );
+                break;
+            case 2:
+                //Registration Date
+                System.out.println("Type The New Registration Date year-month-date");
+                String newRegDate = console.next();
+                DBconnection.executeQuery("UPDATE cars SET reg_date = '" + newRegDate +"' WHERE car_id = " + choice_ID + ";");
+                System.out.println("The Car with the id " + choice_ID + " reg_date was updated" );
+                break;
+            case 3:
+                //Mileage
+                System.out.println("Type The New Mileage ");
+                int newMileage = console.nextInt();
+                DBconnection.executeQuery("UPDATE cars SET mileage = '" + newMileage +"' WHERE car_id = " + choice_ID + ";");
+                System.out.println("The Car with the id " + choice_ID + " mileage was updated" );
+                break;
+            case 4:
+                System.out.println("No Action Has Been Done");
+                break;
+            //I'll add the foreign keys later
+        }
 
     }
 
@@ -162,7 +189,97 @@ public class Services {
         }
     }
     public void updateCustomer() {
+        System.out.println("Choose The ID of the customer you want to update");
+        displayCustomer();
+        String choice_ID = console.next();
+        System.out.println("You Chose To Change "+ choice_ID);
+        System.out.println("|_____________________________|");
+        System.out.println("|    Which Value To Update    |");
+        System.out.println("|_____________________________|");
+        System.out.println("|                             |");
+        System.out.println("|    1.First Name             |");
+        System.out.println("|    2.Last Name              |");
+        System.out.println("|    3.Street Address         |");
+        System.out.println("|    4.ZIP Code               |");
+        System.out.println("|    5.Mobile Phone           |");
+        System.out.println("|    6.Additional Phone       |");
+        System.out.println("|    7.Email                  |");
+        System.out.println("|    8.Driver License         |");
+        System.out.println("|    9.Driver Since           |");
+        System.out.println("|    0.Cancel                 |");
+        System.out.println("|_____________________________|");
+        System.out.println("           Enter number...    ");
+        int choice = console.nextInt();
+        System.out.println("Your choice was " + choice);
 
+        switch (choice) {
+            case 1:
+                //Update First Name
+                System.out.println("Type The New First Name");
+                String newTemp = console.next();
+                DBconnection.executeQuery("UPDATE customers SET first_name = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
+                System.out.println("The Customer with the id " + choice_ID + " First Name has been updated" );
+                break;
+            case 2:
+                //Update Last Name
+                System.out.println("Type The New Last Name");
+                newTemp = console.next();
+                DBconnection.executeQuery("UPDATE customers SET last_name = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
+                System.out.println("The Customer with the id " + choice_ID + " Last Name has been updated" );
+                break;
+            case 3:
+                //Update Street Address
+                System.out.println("Type The New Street Address");
+                newTemp = console.next();
+                DBconnection.executeQuery("UPDATE customers SET st_address = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
+                System.out.println("The Customer with the id " + choice_ID + " Street Address has been updated" );
+                break;
+            case 4:
+                //Update Zip Code
+                System.out.println("Type The ZIP Code");
+                int Temp = console.nextInt();
+                DBconnection.executeQuery("UPDATE customers SET zip = '" + Temp +"' WHERE customer_id = " + choice_ID + ";");
+                System.out.println("The Customer with the id " + choice_ID + " ZIP has been updated" );
+                break;
+            case 5:
+                //Update Mobile Phone
+                System.out.println("Type The New Mobile Phone");
+                newTemp = console.next();
+                DBconnection.executeQuery("UPDATE customers SET mobile_phone = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
+                System.out.println("The Customer with the id " + choice_ID + " Mobile Phone has been updated" );
+                break;
+            case 6:
+                //Update Addit Phone
+                System.out.println("Type The New Additional Phone");
+                newTemp = console.next();
+                DBconnection.executeQuery("UPDATE customers SET addit_phone = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
+                System.out.println("The Customer with the id " + choice_ID + " Additional Phone has been updated" );
+                break;
+            case 7:
+                //Update Email
+                System.out.println("Type The New Customer Email");
+                newTemp = console.next();
+                DBconnection.executeQuery("UPDATE customers SET email = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
+                System.out.println("The Customer with the id " + choice_ID + " Email has been updated" );
+                break;
+            case 8:
+                //Update Driver License
+                System.out.println("Type The New Customer Driver License ID");
+                newTemp = console.next();
+                DBconnection.executeQuery("UPDATE customers SET license = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
+                System.out.println("The Customer with the id " + choice_ID + " Driver License ID has been updated" );
+                break;
+            case 9:
+                System.out.println("Type The New Customer Driver Since Date year-mm-dd");
+                newTemp = console.next();
+                DBconnection.executeQuery("UPDATE customers SET driver_since = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
+                System.out.println("The Customer with the id " + choice_ID + " Driver Since date has been updated" );
+                break;
+            case 0:
+                System.out.println("No Action Has Been Performed");
+                break;
+
+        }
 
     }
 
@@ -222,6 +339,53 @@ public class Services {
         }
     }
     public void updateRental() {
+        System.out.println("Choose The ID of the Rental Contract you want to update");
+        displayRental();
+        String choice_ID = console.next();
+        System.out.println("You Chose To Change "+ choice_ID);
+        System.out.println("|_____________________________|");
+        System.out.println("|    Which Value To Update    |");
+        System.out.println("|_____________________________|");
+        System.out.println("|                             |");
+        System.out.println("|    1.Start Date             |");
+        System.out.println("|    2.End Date               |");
+        System.out.println("|    3.Max km                 |");
+        System.out.println("|    4.Start km               |");
+        System.out.println("|    0.Cancel                 |");
+        System.out.println("|_____________________________|");
+        System.out.println("           Enter number...    ");
+        int choice = console.nextInt();
+        System.out.println("Your choice was " + choice);
+
+        switch (choice) {
+            case 1:
+                System.out.println("Type The New Start Date yyyy-mm-dd hh:mm:ss");
+                String newTemp = console.next();
+                DBconnection.executeQuery("UPDATE contracts SET start_date = '" + newTemp +"' WHERE contract_id = " + choice_ID + ";");
+                System.out.println("The Contract with the id " + choice_ID + " Start Date has been updated" );
+                break;
+            case 2:
+                System.out.println("Type The New End Date yyyy-mm-dd hh:mm:ss");
+                newTemp = console.next();
+                DBconnection.executeQuery("UPDATE contracts SET end_date = '" + newTemp +"' WHERE contract_id = " + choice_ID + ";");
+                System.out.println("The Contract with the id " + choice_ID + " End Date has been updated" );
+                break;
+            case 3:
+                System.out.println("Type The New Max km");
+                int temp = console.nextInt();
+                DBconnection.executeQuery("UPDATE contracts SET max_km = '" + temp +"' WHERE contract_id = " + choice_ID + ";");
+                System.out.println("The Contract with the id " + choice_ID + " Max kilometers has been updated" );
+                break;
+            case 4:
+                System.out.println("Type The New Start km");
+                temp = console.nextInt();
+                DBconnection.executeQuery("UPDATE contracts SET start_km = '" + temp +"' WHERE contract_id = " + choice_ID + ";");
+                System.out.println("The Contract with the id " + choice_ID + " Start kilometers has been updated" );
+                break;
+            case 0:
+                System.out.println("No Action Has Been Performed");
+                break;
+        }
     }
 
     //Methods to input the SQL Code to DB for retrieving or changing of information for Zips
