@@ -402,17 +402,17 @@ public class Services {
         boolean already_exists;
         boolean created = false;
         System.out.println("Type the new Zip-Code: ");
-        int zip = console.nextInt();
+        String zip = console.next();
         System.out.println("Type the new City: ");
         String city = console.next();
         System.out.println("Type the new Country: ");
         String country = console.next();
-        already_exists = DBconnection.executeQuery("SELECT * FROM zip_codes WHERE zip = " + zip + ";");
-        if (already_exists){
-            System.out.println("This Zip-Code already exists.");
-        }else {
-            created = DBconnection.executeQuery("INSERT INTO zip_codes VALUES (" + zip + ", " + city + ", " + country + ";");
-        }
+       // already_exists = DBconnection.executeQuery("SELECT * FROM zip_codes WHERE zip = " + zip + ";");
+       // if (already_exists){
+        //    System.out.println("This Zip-Code already exists.");
+        //}else {
+            created = DBconnection.executeQuery("INSERT INTO zip_codes(zip,city,country) VALUES (" + zip + ",\" " + city + "\", \"" + country + "\");");
+       // }
         if (created){
             System.out.println("New Zip-Code was added to the table.");
         }
@@ -497,10 +497,80 @@ public class Services {
     }
 
     //Methods to input the SQL Code to DB for retrieving or changing of information for brands
-    public void createBrands(){}
-    public void displayBrands(){}
-    public void deleteBrands(){}
-    public void updateBrands(){}
+    public void createBrands(){
+        System.out.println("Enter brand:");
+        String brand=console.next();
+        System.out.println("Enter model: ");
+        String model=console.nextLine();
+
+        DBconnection.executeQuery("INSERT INTO brandModels(brand,model)\nVALUES (\""+brand+"\",\""+model+"\");");
+        System.out.println("New brand has been added!");
+    }
+    public void displayBrands(){
+        ResultSet rs=DBconnection.sendQuery("SELECT * FROM brandModels;");
+        try{
+            while(rs.next())
+            {
+                System.out.println("|ID: "+rs.getString("brandModel_id")+"|Brand: "+rs.getString("brand")+
+                        "|Model: "+rs.getString("model"));
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+    public void deleteBrands(){
+    displayBrands();
+    System.out.println("Enter ID for which brand do you want to delete: ");
+    int brand_id=console.nextInt();
+    boolean deleted=DBconnection.executeQuery("DELETE FROM brandModels WHERE brandModel_id="+brand_id);
+    if(deleted)
+    {
+        System.out.println("Brand with "+brand_id+" id has been deleted.");
+    }
+    else {
+        System.out.println("The brand does not exist");
+    }
+    }
+    public void updateBrands()
+    {
+        displayBrands();
+        System.out.println("Choose The ID of the Brand you want to update");
+        String choice_ID = console.next();
+
+        System.out.println("You Chose To Change "+ choice_ID);
+        System.out.println("|_____________________________|");
+        System.out.println("|    Which Value To Update    |");
+        System.out.println("|_____________________________|");
+        System.out.println("|                             |");
+        System.out.println("|          1. Brand           |");
+        System.out.println("|          2. End Date        |");
+        System.out.println("|          3.Cancel           |");
+        System.out.println("|_____________________________|");
+        String choice_update=console.next();
+        switch (choice_update)
+        {
+            case "1":
+                System.out.println("Enter new brand name: ");
+                String temp=console.next();
+                DBconnection.executeQuery("UPDATE brandModels SET brand="+temp+" WHERE brandModel_id="+choice_ID+";");
+                break;
+            case "2":
+                System.out.println("Enter new model name: ");
+                temp=console.next();
+                DBconnection.executeQuery("UPDATE brandModels SET model="+temp+" WHERE brandModel_id="+choice_ID+";");
+                break;
+            case "3":
+                System.out.println("No action has been performed!");
+                break;
+            default:
+                System.out.println("Wrong input try again!");
+                updateBrands();
+        }
+
+    }
 
     public void displayOneCar() {
         int choice = 0;
