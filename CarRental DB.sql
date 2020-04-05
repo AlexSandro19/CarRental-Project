@@ -25,7 +25,7 @@ CREATE TABLE brandModels(
 CREATE TABLE cars(
 	car_id			INT				PRIMARY KEY						AUTO_INCREMENT,
     brandModel_id	INT 							NOT NULL,
-    reg_num			VARCHAR(8)		UNIQUE			NOT NULL,
+    reg_num			VARCHAR(7)		UNIQUE			NOT NULL,
     reg_date		DATE							NOT NULL,
     mileage			INT								NOT NULL,
 	carType_id		INT,	
@@ -89,9 +89,9 @@ INSERT INTO brandModels VALUES
 (3, "Nissan", "370Z");
 
 INSERT INTO cars VALUES
-(1, 1, "AW203225", "2018-04-10", 500, 1),
-(2, 2, "RE114554", "2016-06-25", 0, 2),
-(3, 3, "MT639852", "2012-08-01", 1000, 3);
+(1, 1, "AW20325", "2018-04-10", 500, 1),
+(2, 2, "RE11454", "2016-06-25", 0, 2),
+(3, 3, "MT63852", "2012-08-01", 1000, 3);
 
 INSERT INTO zip_codes VALUES
 (2000, "Frederiksberg", "Danmark"),
