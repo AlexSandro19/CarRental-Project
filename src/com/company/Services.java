@@ -83,38 +83,41 @@ public class Services {
         System.out.println("|    1.Registration Number    |");
         System.out.println("|    2.Registration Date      |");
         System.out.println("|    3.Mileage                |");
-        System.out.println("|    4.Cancel                 |");
+        System.out.println("|    0.Cancel                 |");
         System.out.println("|_____________________________|");
         System.out.println("           Enter number...    ");
-        int choice = console.nextInt();
+        String choice = console.next();
         System.out.println("Your choice was " + choice);
 
         switch (choice)
         {
-            case 1:
+            case "1":
                 //Registration Number
                 System.out.println("Type The New Registration Number");
                 String newRegNumber = console.next();
                 DBconnection.executeQuery("UPDATE cars SET reg_num = '" + newRegNumber +"' WHERE car_id = " + choice_ID + ";");
                 System.out.println("The Car with the id " + choice_ID + " reg_number was updated" );
                 break;
-            case 2:
+            case "2":
                 //Registration Date
                 System.out.println("Type The New Registration Date year-month-date");
                 String newRegDate = console.next();
                 DBconnection.executeQuery("UPDATE cars SET reg_date = '" + newRegDate +"' WHERE car_id = " + choice_ID + ";");
                 System.out.println("The Car with the id " + choice_ID + " reg_date was updated" );
                 break;
-            case 3:
+            case "3":
                 //Mileage
                 System.out.println("Type The New Mileage ");
                 int newMileage = console.nextInt();
                 DBconnection.executeQuery("UPDATE cars SET mileage = '" + newMileage +"' WHERE car_id = " + choice_ID + ";");
                 System.out.println("The Car with the id " + choice_ID + " mileage was updated" );
                 break;
-            case 4:
+            case "0":
                 System.out.println("No Action Has Been Done");
                 break;
+            default:
+                System.out.println("Invalid User Input ");
+                updateCar();
             //I'll add the foreign keys later
         }
 
@@ -209,75 +212,78 @@ public class Services {
         System.out.println("|    0.Cancel                 |");
         System.out.println("|_____________________________|");
         System.out.println("           Enter number...    ");
-        int choice = console.nextInt();
+        String choice = console.next();
         System.out.println("Your choice was " + choice);
 
         switch (choice) {
-            case 1:
+            case "1":
                 //Update First Name
                 System.out.println("Type The New First Name");
                 String newTemp = console.next();
                 DBconnection.executeQuery("UPDATE customers SET first_name = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " First Name has been updated" );
                 break;
-            case 2:
+            case "2":
                 //Update Last Name
                 System.out.println("Type The New Last Name");
                 newTemp = console.next();
                 DBconnection.executeQuery("UPDATE customers SET last_name = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Last Name has been updated" );
                 break;
-            case 3:
+            case "3":
                 //Update Street Address
                 System.out.println("Type The New Street Address");
                 newTemp = console.next();
                 DBconnection.executeQuery("UPDATE customers SET st_address = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Street Address has been updated" );
                 break;
-            case 4:
+            case "4":
                 //Update Zip Code
                 System.out.println("Type The ZIP Code");
                 int Temp = console.nextInt();
                 DBconnection.executeQuery("UPDATE customers SET zip = '" + Temp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " ZIP has been updated" );
                 break;
-            case 5:
+            case "5":
                 //Update Mobile Phone
                 System.out.println("Type The New Mobile Phone");
                 newTemp = console.next();
                 DBconnection.executeQuery("UPDATE customers SET mobile_phone = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Mobile Phone has been updated" );
                 break;
-            case 6:
+            case "6":
                 //Update Addit Phone
                 System.out.println("Type The New Additional Phone");
                 newTemp = console.next();
                 DBconnection.executeQuery("UPDATE customers SET addit_phone = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Additional Phone has been updated" );
                 break;
-            case 7:
+            case "7":
                 //Update Email
                 System.out.println("Type The New Customer Email");
                 newTemp = console.next();
                 DBconnection.executeQuery("UPDATE customers SET email = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Email has been updated" );
                 break;
-            case 8:
+            case "8":
                 //Update Driver License
                 System.out.println("Type The New Customer Driver License ID");
                 newTemp = console.next();
                 DBconnection.executeQuery("UPDATE customers SET license = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Driver License ID has been updated" );
                 break;
-            case 9:
+            case "9":
                 System.out.println("Type The New Customer Driver Since Date year-mm-dd");
                 newTemp = console.next();
                 DBconnection.executeQuery("UPDATE customers SET driver_since = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Driver Since date has been updated" );
                 break;
-            case 0:
+            case "0":
                 System.out.println("No Action Has Been Performed");
                 break;
+            default:
+                System.out.println("Invalid User Input ");
+                updateCustomer();
 
         }
 
@@ -354,37 +360,40 @@ public class Services {
         System.out.println("|    0.Cancel                 |");
         System.out.println("|_____________________________|");
         System.out.println("           Enter number...    ");
-        int choice = console.nextInt();
+        String choice = console.nextInt();
         System.out.println("Your choice was " + choice);
 
         switch (choice) {
-            case 1:
+            case "1":
                 System.out.println("Type The New Start Date yyyy-mm-dd hh:mm:ss");
                 String newTemp = console.next();
                 DBconnection.executeQuery("UPDATE contracts SET start_date = '" + newTemp +"' WHERE contract_id = " + choice_ID + ";");
                 System.out.println("The Contract with the id " + choice_ID + " Start Date has been updated" );
                 break;
-            case 2:
+            case "2":
                 System.out.println("Type The New End Date yyyy-mm-dd hh:mm:ss");
                 newTemp = console.next();
                 DBconnection.executeQuery("UPDATE contracts SET end_date = '" + newTemp +"' WHERE contract_id = " + choice_ID + ";");
                 System.out.println("The Contract with the id " + choice_ID + " End Date has been updated" );
                 break;
-            case 3:
+            case "3":
                 System.out.println("Type The New Max km");
                 int temp = console.nextInt();
                 DBconnection.executeQuery("UPDATE contracts SET max_km = '" + temp +"' WHERE contract_id = " + choice_ID + ";");
                 System.out.println("The Contract with the id " + choice_ID + " Max kilometers has been updated" );
                 break;
-            case 4:
+            case "4":
                 System.out.println("Type The New Start km");
                 temp = console.nextInt();
                 DBconnection.executeQuery("UPDATE contracts SET start_km = '" + temp +"' WHERE contract_id = " + choice_ID + ";");
                 System.out.println("The Contract with the id " + choice_ID + " Start kilometers has been updated" );
                 break;
-            case 0:
+            case "0":
                 System.out.println("No Action Has Been Performed");
                 break;
+            default:
+                System.out.println("Invalid User Input ");
+                updateRental();
         }
     }
 

@@ -21,23 +21,23 @@ package com.company;
             System.out.println("|            5.Quit           |");
             System.out.println("|_____________________________|");
             System.out.println("           Enter number...    ");
-            int choice = console.nextInt();
+            String choice = console.next();
 
             switch (choice)
             {
-                case 1:
+                case "1":
                     carsMenu();
                     break;
-                case 2:
+                case "2":
                     customersMenu();
                     break;
-                case 3:
+                case "3":
                     rentalMenu();
                     break;
-                case 4:
+                case "4":
                     othersMenu();
                     break;
-                case 5:
+                case "5":
                     System.exit(0);
                     break;
                 default:
@@ -61,26 +61,26 @@ package com.company;
             System.out.println("|           5.Back            |");
             System.out.println("|_____________________________|");
             System.out.println("           Enter number...    ");
-            int choice =console.nextInt();
+            String choice =console.next();
             switch (choice)
             {
-                case 1:
+                case "1":
                     createCar();
                     carsMenu();
                     break;
-                case 2:
+                case "2":
                     displayCar();
                     carsMenu();
                     break;
-                case 3:
+                case "3":
                     deleteCar();
                     carsMenu();
                     break;
-                case 4:
+                case "4":
                     updateCar();
                     carsMenu();
                     break;
-                case 5:
+                case "5":
                     mainMenu();
                     break;
                 default:
@@ -105,27 +105,27 @@ package com.company;
             System.out.println("|           5.Back            |");
             System.out.println("|_____________________________|");
             System.out.println("           Enter number...    ");
-            int choice =console.nextInt();
+            String choice =console.next();
 
             switch (choice)
             {
-                case 1:
+                case "1":
                     createCustomer();
                     customersMenu();
                     break;
-                case 2:
+                case "2":
                     displayCustomer();
                     customersMenu();
                     break;
-                case 3:
+                case "3":
                     deleteCustomer();
                     customersMenu();
                     break;
-                case 4:
+                case "4":
                     updateCustomer();
                     customersMenu();
                     break;
-                case 5:
+                case "5":
                     mainMenu();
                     break;
                 default:
@@ -152,26 +152,26 @@ package com.company;
             System.out.println("|           5.Back            |");
             System.out.println("|_____________________________|");
             System.out.println("           Enter number...    ");
-            int choice =console.nextInt();
+            String choice =console.next();
             switch (choice)
             {
-                case 1:
+                case "1":
                     createRental();
                     rentalMenu();
                     break;
-                case 2:
+                case "2":
                     displayRental();
                     rentalMenu();
                     break;
-                case 3:
+                case "3":
                     deleteRental();
                     rentalMenu();
                     break;
-                case 4:
+                case "4":
                     updateRental();
                     rentalMenu();
                     break;
-                case 5:
+                case "5":
                     mainMenu();
                     break;
                 default:
@@ -192,13 +192,13 @@ package com.company;
             System.out.println("|            3.Back           |");
             System.out.println("|_____________________________|");
             System.out.println("           Enter number...    ");
-            int choice= console.nextInt();
+            String choice= console.next();
             switch (choice)
             {
-                case 1:
+                case "1":
                     zipsMenu();
                     break;
-                case 2:
+                case "2":
                     brandsMenu();
                     break;
                 case 3:
@@ -223,26 +223,26 @@ package com.company;
             System.out.println("|            5.Back           |");
             System.out.println("|_____________________________|");
             System.out.println("           Enter number...    ");
-            int choice= console.nextInt();
+            String choice= console.next();
             switch (choice)
             {
-                case 1:
+                case "1":
                     createZips();
                     zipsMenu();
                     break;
-                case 2:
+                case "2":
                     displayZips();
                     zipsMenu();
                     break;
-                case 3:
+                case "3":
                     deleteZips();
                     zipsMenu();
                     break;
-                case 4:
+                case "4":
                     updateZips();
                     zipsMenu();
                     break;
-                case 5:
+                case "5":
                     othersMenu();
                     break;
                 default:
@@ -263,26 +263,26 @@ package com.company;
             System.out.println("|            5.Back           |");
             System.out.println("|_____________________________|");
             System.out.println("           Enter number...    ");
-            int choice= console.nextInt();
+            String choice= console.next();
             switch (choice)
             {
-                case 1:
+                case "1":
                     createBrands();
                     brandsMenu();
                     break;
-                case 2:
+                case "2":
                     displayBrands();
                     brandsMenu();
                     break;
-                case 3:
+                case "3":
                     deleteBrands();
                     brandsMenu();
                     break;
-                case 4:
+                case "4":
                     updateBrands();
                     brandsMenu();
                     break;
-                case 5:
+                case "5":
                     othersMenu();
                     break;
                 default:
