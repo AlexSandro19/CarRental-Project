@@ -12,7 +12,7 @@ CREATE TABLE carTypes(
     eng_volume		INT 							NOT NULL,
     air_con			TINYINT(1)						NOT NULL,
     cruise_control	TINYINT(1)						NOT NULL,
-	seats			VARCHAR(3)						NOT NULL,
+	seats			VARCHAR(15)						NOT NULL,
 	hp				int								NOT NULL
 );
 
