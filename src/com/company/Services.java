@@ -389,10 +389,103 @@ public class Services {
     }
 
     //Methods to input the SQL Code to DB for retrieving or changing of information for Zips
-    public void createZips(){}
-    public void displayZips(){}
-    public void deleteZips(){}
-    public void updateZips(){}
+    public void createZips(){
+        boolean already_exists;
+        boolean created = false;
+        System.out.println("Type the new Zip-Code: ");
+        int zip = console.nextInt();
+        System.out.println("Type the new City: ");
+        String city = console.next();
+        System.out.println("Type the new Country: ");
+        String country = console.next();
+        already_exists = DBconnection.executeQuery("SELECT * FROM zip_codes WHERE zip = " + zip + ";");
+        if (already_exists){
+            System.out.println("This Zip-Code already exists.");
+        }else {
+            created = DBconnection.executeQuery("INSERT INTO zip_codes VALUES (" + zip + ", " + city + ", " + country + ";");
+        }
+        if (created){
+            System.out.println("New Zip-Code was added to the table.");
+        }
+
+
+    }
+    public void displayZips(){
+        ResultSet rs = DBconnection.sendQuery("SELECT * FROM zip_codes;");
+        try{
+           while(rs.next()){
+               System.out.println("|ID: " + rs.getString("zip") + "|City: " + rs.getString("city") + "|Country: " +
+                       rs.getString("country"));
+           }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+    public void deleteZips(){
+        displayZips();
+        System.out.println("Type the Zip-Code you want to delete: ");
+        int user_input = console.nextInt();
+        boolean deleted = DBconnection.executeQuery("DELETE FROM contracts WHERE zip = " + user_input + ";");
+        if (deleted){
+            System.out.println("Zip-Code = " + user_input + " was deleted.");
+        }else{
+            System.out.println("This Zip-Code doesn't exist.");
+        }
+    }
+    public void updateZips(){
+        boolean updated = false;
+        String city;
+        String country;
+        displayZips();
+        System.out.println("Type the Zip-Code you want to update: ");
+        int toUpdate = console.nextInt();
+        System.out.println("|_____________________________|");
+        System.out.println("|    Which Value To Update    |");
+        System.out.println("|_____________________________|");
+        System.out.println("|                             |");
+        System.out.println("|       1. City               |");
+        System.out.println("|       2. Country            |");
+        System.out.println("|       3. City & Country     |");
+        System.out.println("|_____________________________|");
+        System.out.println("        Enter number...    ");
+        int choice = console.nextInt();
+        switch (choice){
+            case 1:
+                System.out.println( "Type the new City: ");
+                city = console.next();
+                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET city = " + city + " WHERE zip = " + toUpdate + ";");
+                break;
+            case 2:
+                System.out.println( "Type the new Country: ");
+                country = console.next();
+                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET country = " + country + " WHERE zip = " + toUpdate + ";");
+                break;
+            case 3:
+                System.out.println( "Type the new City: ");
+                city = console.next();
+                System.out.println( "Type the new Country: ");
+                country = console.next();
+                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET city = " + city + ", country = " + country +
+                                                    " WHERE zip = " + toUpdate + ";");
+                break;
+            default:
+                System.out.println("Wrong input.");
+        }
+        if (updated){
+            System.out.println("Zip-Code = " + toUpdate + ", was updated.");
+            ResultSet rs = DBconnection.sendQuery("SELECT * FROM zip_codes WHERE zip = " + toUpdate + ";");
+            try{
+                while(rs.next()){
+                    System.out.println("|ID: " + rs.getString("zip") + "|City: " + rs.getString("city") + "|Country: " +
+                            rs.getString("country"));
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+    }
 
     //Methods to input the SQL Code to DB for retrieving or changing of information for brands
     public void createBrands(){}

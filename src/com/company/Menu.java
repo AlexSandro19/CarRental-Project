@@ -201,6 +201,9 @@ package com.company;
                 case 2:
                     brandsMenu();
                     break;
+                case 3:
+                    mainMenu();
+                    break;
                 default:
                     System.out.println("Invalid user input try again pls");
                     othersMenu();
