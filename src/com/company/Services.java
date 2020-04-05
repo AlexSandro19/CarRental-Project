@@ -360,7 +360,7 @@ public class Services {
         System.out.println("|    0.Cancel                 |");
         System.out.println("|_____________________________|");
         System.out.println("           Enter number...    ");
-        String choice = console.nextInt();
+        String choice = console.next();
         System.out.println("Your choice was " + choice);
 
         switch (choice) {
