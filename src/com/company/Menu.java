@@ -189,7 +189,8 @@ package com.company;
             System.out.println("|           Others Menu       |");
             System.out.println("|            1.Zips           |");
             System.out.println("|            2.Brands         |");
-            System.out.println("|            3.Back           |");
+            System.out.println("|            3.Car Types      |");
+            System.out.println("|            4.Back           |");
             System.out.println("|_____________________________|");
             System.out.println("           Enter number...    ");
             String choice= console.next();
@@ -202,6 +203,9 @@ package com.company;
                     brandsMenu();
                     break;
                 case 3:
+                    typesMenu();
+                    break;
+                case 4:
                     mainMenu();
                     break;
                 default:
@@ -250,6 +254,7 @@ package com.company;
                     zipsMenu();
             }
         }
+
         public void brandsMenu()
         {
             System.out.println("|_____________________________|");
@@ -291,6 +296,49 @@ package com.company;
             }
 
         }
+
+        public void typesMenu(){
+            System.out.println("|_____________________________|");
+            System.out.println("|    Killua Car Dealership    |");
+            System.out.println("|_____________________________|");
+            System.out.println("|           Car Types Menu    |");
+            System.out.println("|            1.Create         |");
+            System.out.println("|            2.Display        |");
+            System.out.println("|            3.Delete         |");
+            System.out.println("|            4.Update         |");
+            System.out.println("|            5.Back           |");
+            System.out.println("|_____________________________|");
+            System.out.println("           Enter number...    ");
+            String choice= console.next();
+            switch (choice){
+                case "1":
+                    createTypes();
+                    typesMenu();
+                    break;
+                case "2":
+                    displayTypes();
+                    typesMenu();
+                    break;
+                case "3":
+                    deleteTypes();
+                    typesMenu();
+                    break;
+                case "4":
+                    updateTypes();
+                    typesMenu();
+                    break;
+                case "5":
+                    othersMenu();
+                    break;
+                default:
+                    System.out.println("Invalid user input try again pls");
+                    typesMenu();
+
+            }
+
+        }
+
+
         //Methods for displaying, creating, deleting, updating cars
         public void createCar()
         {
@@ -364,11 +412,15 @@ package com.company;
             Main.getController().updateZips();
         }
         //Methods for displaying, creating, deleting, updating brands
-        public void createBrands(){Main.getController().updateBrands();}
+        public void createBrands(){Main.getController().createBrands();}
         public void  displayBrands(){Main.getController().displayBrands();}
         public  void deleteBrands(){Main.getController().deleteBrands();}
         public void updateBrands(){Main.getController().updateBrands();}
-
+        //Methods for displaying, creating, deleting, updating car types
+        public void createTypes(){Main.getController().createTypes();}
+        public void  displayTypes(){Main.getController().displayTypes();}
+        public  void deleteTypes(){Main.getController().deleteTypes();}
+        public void updateTypes(){Main.getController().updateTypes();}
     }
 
 

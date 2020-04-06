@@ -64,4 +64,9 @@ public class Controller {
     public void displayBrands(){services.displayBrands();}
     public void deleteBrands(){services.deleteBrands();}
     public void updateBrands(){services.updateBrands();}
+
+    public void createTypes(){services.createTypes();}
+    public void  displayTypes(){services.displayTypes();}
+    public void deleteTypes(){services.deleteTypes();}
+    public void updateTypes(){services.updateTypes();}
 }

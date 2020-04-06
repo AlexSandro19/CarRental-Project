@@ -435,12 +435,9 @@ public class Services {
         displayZips();
         System.out.println("Type the Zip-Code you want to delete: ");
         int user_input = console.nextInt();
-        boolean deleted = DBconnection.executeQuery("DELETE FROM contracts WHERE zip = " + user_input + ";");
-        if (deleted){
-            System.out.println("Zip-Code = " + user_input + " was deleted.");
-        }else{
-            System.out.println("This Zip-Code doesn't exist.");
-        }
+        DBconnection.executeQuery("DELETE FROM contracts WHERE zip = " + user_input + ";");
+
+        System.out.println("Zip-Code = " + user_input + " was deleted.");
     }
     public void updateZips(){
         boolean updated = false;
@@ -463,20 +460,20 @@ public class Services {
             case 1:
                 System.out.println( "Type the new City: ");
                 city = console.next();
-                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET city = " + city + " WHERE zip = " + toUpdate + ";");
+                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET city = \"" + city + "\" WHERE zip = " + toUpdate + ";");
                 break;
             case 2:
                 System.out.println( "Type the new Country: ");
                 country = console.next();
-                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET country = " + country + " WHERE zip = " + toUpdate + ";");
+                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET country = \"" + country + "\" WHERE zip = " + toUpdate + ";");
                 break;
             case 3:
                 System.out.println( "Type the new City: ");
                 city = console.next();
                 System.out.println( "Type the new Country: ");
                 country = console.next();
-                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET city = " + city + ", country = " + country +
-                                                    " WHERE zip = " + toUpdate + ";");
+                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET city = \"" + city + "\", country = \"" + country +
+                                                    "\" WHERE zip = " + toUpdate + ";");
                 break;
             default:
                 System.out.println("Wrong input.");
@@ -572,6 +569,68 @@ public class Services {
 
     }
 
+    //Methods to input the SQL Code to DB for retrieving or changing of information for car Types
+    public void createTypes(){
+        System.out.println("Type in the Car Type:");
+        String car_type = console.next();
+        System.out.println("Type in the Transmission Type:");
+        String transmission = console.next();
+        System.out.println("Type in the Engine Volume:");
+        String eng_volume = console.next();
+        System.out.println("Type in if the car has Air Conditioner (1 for Yes // 0 for No):");
+        String air_con = console.next();
+        System.out.println("Type in if the car has Cruise Control (1 for Yes // 0 for No):");
+        String cruise_control = console.next();
+        System.out.println("Type in info about seats (number of material): ");
+        String seats = console.next();
+        System.out.println("Type in how much Horse Power the car has: ");
+        String hp = console.next();
+        DBconnection.executeQuery("INSERT INTO cartypes (car_type, transmission, eng_volume, air_con, cruise_control, seats, hp)\n" +
+                                                    "VALUES (\"" + car_type + "\", \"" + transmission + "\", " + eng_volume + ", " + air_con + ", " +
+                                                    cruise_control + ", \"" + seats + "\", " + hp + ");");
+        boolean created = true;
+        System.out.println(created);
+        if (created){
+            System.out.println("New Car Type was added to the table.");
+        }
+    }
+    public void displayTypes(){
+        ResultSet rs = DBconnection.sendQuery("SELECT * FROM cartypes;");
+        try{
+            while(rs.next()){
+                String  str = "|ID: " + rs.getString("carType_id") + "|Car Type: " + rs.getString("car_type") +
+                                   "|Transmission: " + rs.getString("transmission") + "|Engine Volume:" + rs.getString("eng_volume");
+                String air_con = rs.getString("air_con");
+                if (air_con.equals("1")){
+                    str = str + "|Air Conditioner: Yes";
+                }else {
+                    str = str + "|Air Conditioner: No";
+                }
+                String cruise_control = rs.getString("cruise_control");
+                if (cruise_control.equals("1")){
+                    str = str + "|Cruise Control: Yes";
+                }else {
+                    str = str + "|Cruise Control: No";
+                }
+                str = str + "|Seats: " + rs.getString("seats") + "|Horse Power: " + rs.getString("hp");
+                System.out.println(str);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+    public void deleteTypes(){
+        displayTypes();
+        System.out.println("Write the ID of Car Type you want to delete: ");
+        String user_input = console.next();
+        DBconnection.executeQuery("DELETE FROM cartypes WHERE carType_id = " + user_input + ";");
+        System.out.println("Car Type with ID = " + user_input + " was deleted.");
+    }
+    public void updateTypes(){
+
+
+    }
     public void displayOneCar() {
         int choice = 0;
         System.out.println("Choose the ID of the car you want to search ");
