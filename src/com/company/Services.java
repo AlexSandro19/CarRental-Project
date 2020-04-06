@@ -533,6 +533,7 @@ public class Services {
     }
     public void updateBrands()
     {
+        //updates the information in brands through user input and choices
         displayBrands();
         System.out.println("Choose The ID of the Brand you want to update");
         String choice_ID = console.next();
@@ -632,6 +633,7 @@ public class Services {
 
     }
     public void displayOneCar() {
+        //displays one specific car which the user choose through console input
         int choice = 0;
         System.out.println("Choose the ID of the car you want to search ");
         choice = console.nextInt();
@@ -659,6 +661,7 @@ public class Services {
         }
     }
     public void displayOneCustomer(){
+        //displays one specific customer which the user choose through console input
         System.out.println("Choose the driver licence of the customer you want to search ");
         int choice = console.nextInt();
         ResultSet rs=DBconnection.sendQuery("SELECT customers.customer_id,customers.first_name,customers.last_name,customers.st_address,\n" +
@@ -687,6 +690,7 @@ public class Services {
         }
     }
     public void displayOneRental() {
+        //displays one specific rental which the user choose through console input
         System.out.println("Choose the contract ID you want to search ");
         int choice = console.nextInt();
         ResultSet rs=DBconnection.sendQuery("SELECT contracts.contract_id,customers.first_name,customers.last_name,customers.driver_license,cars.reg_num,contracts.start_date,\n" +

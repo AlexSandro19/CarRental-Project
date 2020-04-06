@@ -8,7 +8,7 @@ package com.company;
                 mainMenu();
             }
         //Main UI methods
-        public void mainMenu()
+        public static void mainMenu()
         {
             System.out.println("|_____________________________|");
             System.out.println("|    Killua Car Dealership    |");
@@ -47,7 +47,8 @@ package com.company;
 
 
         }
-        public void carsMenu()
+        //UI for cars
+        public static void carsMenu()
         {
             System.out.println("|_____________________________|");
             System.out.println("|    Killua Car Dealership    |");
@@ -69,7 +70,19 @@ package com.company;
                     carsMenu();
                     break;
                 case "2":
-                    displayCar();
+                    System.out.println("Do you want to display (1)specific entry or (2)all");
+                    String display=console.next();
+                    if(display.equalsIgnoreCase("1"))
+                    {
+                        displayOneCar();
+                    }
+                    else if(display.equalsIgnoreCase("2")) {
+                        displayCar();
+
+                    }
+                    else{
+                        System.out.println("Wrong input!");
+                    }
                     carsMenu();
                     break;
                 case "3":
@@ -90,8 +103,8 @@ package com.company;
             }
 
         }
-
-        public void customersMenu()
+        //UI for customers
+        public static void customersMenu()
         {
             System.out.println("|_____________________________|");
             System.out.println("|    Killua Car Dealership    |");
@@ -113,8 +126,18 @@ package com.company;
                     createCustomer();
                     customersMenu();
                     break;
-                case "2":
-                    displayCustomer();
+                case "2":    System.out.println("Do you want to display (1)specific entry or (2)all");
+                    String display=console.next();
+                    if(display.equalsIgnoreCase("1"))
+                    {
+                        displayOneCustomer();
+                    }
+                    else if(display.equalsIgnoreCase("2")) {
+                        displayCustomer();
+                    }
+                    else{
+                        System.out.println("Wrong input!");
+                    }
                     customersMenu();
                     break;
                 case "3":
@@ -137,8 +160,8 @@ package com.company;
 
         }
 
-
-        public void rentalMenu()
+        //UI for rentals
+        public static void rentalMenu()
         {
             System.out.println("|_____________________________|");
             System.out.println("|    Killua Car Dealership    |");
@@ -160,7 +183,18 @@ package com.company;
                     rentalMenu();
                     break;
                 case "2":
+                    System.out.println("Do you want to display (1)specific entry or (2)all");
+                    String display=console.next();
+                    if(display.equalsIgnoreCase("1"))
+                    {
+                        displayOneRental();
+                    }
+                        else if(display.equalsIgnoreCase("2")) {
                     displayRental();
+                }
+                        else{
+                            System.out.println("Wrong input!");
+                    }
                     rentalMenu();
                     break;
                 case "3":
@@ -181,7 +215,8 @@ package com.company;
             }
 
         }
-        public void othersMenu()
+        //UI other smaller needs of the system(Zips, Brands)
+        public static void othersMenu()
         {
             System.out.println("|_____________________________|");
             System.out.println("|    Killua Car Dealership    |");
@@ -202,10 +237,10 @@ package com.company;
                 case "2":
                     brandsMenu();
                     break;
-                case 3:
+                case "3":
                     typesMenu();
                     break;
-                case 4:
+                case "4":
                     mainMenu();
                     break;
                 default:
@@ -214,7 +249,8 @@ package com.company;
             }
 
         }
-        public void zipsMenu()
+        //UI for zips
+        public static void zipsMenu()
         {
             System.out.println("|_____________________________|");
             System.out.println("|    Killua Car Dealership    |");
@@ -254,8 +290,7 @@ package com.company;
                     zipsMenu();
             }
         }
-
-        public void brandsMenu()
+        public static void brandsMenu()
         {
             System.out.println("|_____________________________|");
             System.out.println("|    Killua Car Dealership    |");
@@ -297,7 +332,7 @@ package com.company;
 
         }
 
-        public void typesMenu(){
+        public static void typesMenu(){
             System.out.println("|_____________________________|");
             System.out.println("|    Killua Car Dealership    |");
             System.out.println("|_____________________________|");
@@ -340,87 +375,90 @@ package com.company;
 
 
         //Methods for displaying, creating, deleting, updating cars
-        public void createCar()
-        {
-            Main.getController().createCar();
+        public static void createCar()
+        { Main.getController().createCar();
         }
-        public void displayCar()
-        {
-        Main.getController().displayCar();
+        public static void displayCar()
+        { Main.getController().displayCar();
         }
-        public void deleteCar()
+        public static void displayOneCar()
+        {Main.getController().displayOneCar();}
+        public static void deleteCar()
         {
             System.out.println();
             Main.getController().deleteCar();
         }
-        public  void updateCar()
-        {
-            Main.getController().updateCar();
+        public static void updateCar()
+        { Main.getController().updateCar();
         }
+
         //Methods for displaying, creating, deleting, updating customers
-        public void createCustomer()
-        {
-        Main.getController().createCustomer();
+        public static void createCustomer()
+        { Main.getController().createCustomer();
         }
-        public void displayCustomer()
-        {
-        Main.getController().displayCustomer();
+        public static void displayCustomer()
+        { Main.getController().displayCustomer();
         }
-        public void deleteCustomer()
+        public static void displayOneCustomer()
+        {Main.getController().displayOneCustomer();}
+        public static void deleteCustomer()
         {
             System.out.println();
             Main.getController().deleteCustomer();
         }
-        public  void updateCustomer()
-        {
-            Main.getController().updateCustomer();
+        public  static void updateCustomer()
+        { Main.getController().updateCustomer();
         }
 
+
         //Methods for displaying, creating, deleting, updating rentals
-        public void createRental()
+        public static void createRental()
         {
             Main.getController().createRental();
         }
-        public void displayRental()
+        public static  void displayRental()
         {
             Main.getController().displayRental();
         }
-        public void deleteRental()
+        public static void displayOneRental()
+        {Main.getController().displayOneRental();}
+        public static void deleteRental()
         {
             System.out.println();
             Main.getController().deleteRental();
         }
-        public  void updateRental()
+        public  static void updateRental()
         {
             Main.getController().updateRental();
         }
         //Methods for displaying, creating, deleting, updating zips
-        public void createZips()
+        public static void createZips()
         {
             Main.getController().createZips();
         }
-        public void displayZips()
+        public static void displayZips()
         {
             Main.getController().displayZips();
         }
-        public void deleteZips()
+        public static void deleteZips()
         {
             Main.getController().deleteZips();
         }
-        public void updateZips()
+        public static void updateZips()
         {
             Main.getController().updateZips();
         }
         //Methods for displaying, creating, deleting, updating brands
-        public void createBrands(){Main.getController().createBrands();}
-        public void  displayBrands(){Main.getController().displayBrands();}
-        public  void deleteBrands(){Main.getController().deleteBrands();}
-        public void updateBrands(){Main.getController().updateBrands();}
+        public static void createBrands(){Main.getController().createBrands();}
+        public static void  displayBrands(){Main.getController().displayBrands();}
+        public  static void deleteBrands(){Main.getController().deleteBrands();}
+        public  static void updateBrands(){Main.getController().updateBrands();}
+
         //Methods for displaying, creating, deleting, updating car types
-        public void createTypes(){Main.getController().createTypes();}
-        public void  displayTypes(){Main.getController().displayTypes();}
-        public  void deleteTypes(){Main.getController().deleteTypes();}
-        public void updateTypes(){Main.getController().updateTypes();}
+        public static void createTypes(){Main.getController().createTypes();}
+        public static void displayTypes(){Main.getController().displayTypes();}
+        public static void deleteTypes(){Main.getController().deleteTypes();}
+        public static void updateTypes(){Main.getController().updateTypes();}
     }
 
 

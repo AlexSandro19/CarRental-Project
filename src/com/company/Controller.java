@@ -13,11 +13,12 @@ public class Controller {
     {
     services.displayCar();
     }
+    public void displayOneCar(){services.displayOneCar();}
     public void deleteCar()
     {
         services.deleteCar();
     }
-    public  void updateCar()
+    public void updateCar()
     {
     services.updateCar();
     }
@@ -30,6 +31,7 @@ public class Controller {
     {
     services.displayCustomer();
     }
+    public void displayOneCustomer(){services.displayOneCustomer();}
     public void deleteCustomer()
     {
     services.deleteCustomer();
@@ -42,18 +44,16 @@ public class Controller {
     public void createRental() {
         services.createRental();
     }
-
     public void displayRental() {
         services.displayRental();
     }
-
     public void deleteRental() {
         services.deleteRental();
     }
-
     public void updateRental() {
         services.updateRental();
     }
+    public void displayOneRental(){services.displayOneRental();}
 
     public void createZips(){services.createZips();}
     public void  displayZips(){services.displayZips();}
