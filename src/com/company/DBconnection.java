@@ -9,16 +9,17 @@ public class DBconnection {
         private  static String password = "asdfzxcv123";
 
     public static ResultSet sendQuery(String query) {
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(url, username, password);
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(query); // Query is executed.
+            Connection con= DriverManager.getConnection(url, username, password);
+             Statement st = con.createStatement();
+           ResultSet rs = st.executeQuery(query); // Query is executed.
+
             return rs; // The ResultSet is being returned.
-        } catch (SQLException | ClassNotFoundException| InputMismatchException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("Error in input for SQL functions!! Try again");
-            Menu.mainMenu();
         }
         return null;
     }
@@ -30,11 +31,10 @@ public class DBconnection {
         Connection con = DriverManager.getConnection(url, username, password);
         Statement st = con.createStatement();
         boolean rs = st.execute(query); // Query is executed.
-        return rs; // The ResultSet is being returned.
-    } catch (SQLException | ClassNotFoundException |InputMismatchException e) {
+         return rs; // The ResultSet is being returned.
+    } catch (SQLException |ClassNotFoundException |InputMismatchException e) {
         e.printStackTrace();
         System.out.println("Error in input for SQL functions!! Try again");
-        Menu.mainMenu();
     }
         return false; // Returns null in case of any exception.
 
