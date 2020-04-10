@@ -47,12 +47,12 @@ public class Services {
         try {
             while(rs.next())
             {
-                System.out.println("|ID: "+rs.getString("car_id")+"|Brand: "+rs.getString("brand")+"|Model: "+rs.getString("model")+
-                        "|Reg.Nr: "+rs.getString("reg_num")+"|Reg.Date"+rs.getString("reg_date")+
-                        "|Mileage: " +rs.getString("mileage")+"|Car Type: " +rs.getString("car_type")+
-                        "|Transmision:  " +rs.getString("transmission")+"|Air condition: " +rs.getString("air_con")+
-                        "|Engine Volume: " +rs.getString("eng_volume")+"|Horse Power: " +rs.getString("hp")+
-                        "|Seats Nr: " +rs.getString("seats"));
+                System.out.printf("%5s%-3s%-7s%-15s%-10s%-10s%8s%-10s%-11s%-12s%9s%-6s%10s%-10s%13s%10s%15s%2s%10s%4s%12s%4s%12s%2s\n","|ID: ",rs.getString("car_id"),"|Brand: ",rs.getString("brand"),"|Model: ",rs.getString("model"),
+                        "|Reg.Nr: ",rs.getString("reg_num"),"|Reg.Date: ",rs.getString("reg_date"),
+                        "|Mileage: " ,rs.getString("mileage"),"|Car Type: " ,rs.getString("car_type"),
+                        "|Transmision:  " ,rs.getString("transmission"),"|Air condition: " ,rs.getString("air_con"),
+                        "|Engine Volume: " ,rs.getString("eng_volume"),"|Horse Power: " ,rs.getString("hp"),
+                        "|Seats Nr: " ,rs.getString("seats"));
             }
         }
         catch (SQLException e)
@@ -165,13 +165,13 @@ public class Services {
         try {
             while(rs.next())
             {
-                System.out.println("|ID: "+rs.getString("customer_id")+"|First name: "+rs.getString("first_name")+
-                        "|Last name: "+rs.getString("last_name")+
-                        "|Adress: "+rs.getString("st_address")+"|Zip code"+rs.getString("zip")+
-                        "|City: " +rs.getString("city")+"|Country: " +rs.getString("country")+
-                        "|Phone:  " +rs.getString("mobile_phone")+"|Extra phone: " +rs.getString("addit_phone")+
-                        "|E-mail: " +rs.getString("email")+"|Driver licence: " +rs.getString("driver_license")+
-                        "|Driver since: " +rs.getString("driver_since"));
+                System.out.printf(" %5s%-3s%-15s%-10s%15s%-10s%8s%-25s%9s%-5s%6s%-15s%9s%-15s%7s%10s%15s%10s%8s%20s%16s%9s%13s%15s\n","|ID: ",rs.getString("customer_id"),"|First name: ",rs.getString("first_name"),
+                        "|Last name: ",rs.getString("last_name"),
+                        "|Adress: ",rs.getString("st_address"),"|Zip code ",rs.getString("zip"),
+                        "|City: " ,rs.getString("city"),"|Country: " ,rs.getString("country"),
+                        "|Phone:  ",rs.getString("mobile_phone"),"|Extra phone: ",rs.getString("addit_phone"),
+                        "|E-mail: ",rs.getString("email"),"|Driver licence: " ,rs.getString("driver_license"),
+                        "|Driver since: ",rs.getString("driver_since"));
             }
         }
         catch (SQLException e)
@@ -319,18 +319,18 @@ public class Services {
         try {
             while(rs.next())
             {
-                System.out.println("|ID: "+rs.getString("contract_id")+"|First name: "+rs.getString("first_name")+
-                        "|Last name: "+rs.getString("last_name")+ "|Licence: "+rs.getString("driver_license")+
-                        "|Car reg.nr: "+rs.getString("reg_num")+"|From "+rs.getString("start_date")+
-                        "|End date: " +rs.getString("end_date")+"|Available for: " +rs.getString("max_km")+ "km"+
-                        "|Starting point: " +rs.getString("start_km"));
+                System.out.printf(" %5s%-3s%15s%-10s%15s%10s%10s%-15s%9s%10s%15s%5s%5s%5s%5s%5s%5s%5s%5s\n","|ID: ",rs.getString("contract_id"),"|First name: ", rs.getString("first_name"),
+                        "|Last name: ",rs.getString("last_name"), "|Licence: ",rs.getString("driver_license"),
+                        "|Car reg.nr: ",rs.getString("reg_num"),"|From ",rs.getString("start_date"),
+                        "|End date: " ,rs.getString("end_date"),"|Available for: " ,rs.getString("max_km"), "km",
+                        "|Starting point: " ,rs.getString("start_km"));
             }
         }
         catch (SQLException e)
         {
             e.printStackTrace();
         }
-
+       
 
     }
     public void deleteRental() {
