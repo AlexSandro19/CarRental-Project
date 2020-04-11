@@ -330,7 +330,7 @@ public class Services {
         {
             e.printStackTrace();
         }
-       
+
 
     }
     public void deleteRental() {
@@ -423,7 +423,7 @@ public class Services {
         ResultSet rs = DBconnection.sendQuery("SELECT * FROM zip_codes;");
         try{
            while(rs.next()){
-               System.out.println("|ID: " + rs.getString("zip") + "|City: " + rs.getString("city") + "|Country: " +
+               System.out.printf("%5s%5s%7s%15s%10s%11s\n","|ID: " , rs.getString("zip") , "|City: " , rs.getString("city") , "|Country: " ,
                        rs.getString("country"));
            }
         }catch(SQLException e){
@@ -508,8 +508,8 @@ public class Services {
         try{
             while(rs.next())
             {
-                System.out.println("|ID: "+rs.getString("brandModel_id")+"|Brand: "+rs.getString("brand")+
-                        "|Model: "+rs.getString("model"));
+                System.out.printf("%5s%3s%7s%-17s%8s%-11s\n","|ID: ",rs.getString("brandModel_id"),"|Brand: ",rs.getString("brand"),
+                        "|Model: ",rs.getString("model"));
             }
         }
         catch (SQLException e)
