@@ -100,7 +100,7 @@ public class Services {
                 break;
             case "2":
                 //Registration Date
-                System.out.println("Type The New Registration Date year-month-date");
+                System.out.println("Type The New Registration Date YYYY-MM-DD");
                 String newRegDate = console.next();
                 DBconnection.executeQuery("UPDATE cars SET reg_date = '" + newRegDate +"' WHERE car_id = " + choice_ID + ";");
                 System.out.println("The Car with the id " + choice_ID + " reg_date was updated" );
@@ -129,9 +129,9 @@ public class Services {
            Method for creating a customer elements in the DB then adding them to the system
          */
         System.out.println("Enter first name:");
-        String first_name=console.next();
+        String first_name=console.nextLine();
         System.out.println("Enter family name: ");
-        String last_name=console.next();
+        String last_name=console.nextLine();
         System.out.println("Enter zip code: ");
         int zip=console.nextInt();
         console.nextLine();
@@ -145,7 +145,7 @@ public class Services {
         String email=console.next();
         System.out.println("Enter driver licence number: ");
         String driver_license=console.next();
-        System.out.println("Enter driver since date: ");
+        System.out.println("Enter driver since date(YYYY-MM-DD): ");
         String driver_since=console.next();
 
         //enters the user input into the DB
@@ -219,21 +219,21 @@ public class Services {
             case "1":
                 //Update First Name
                 System.out.println("Type The New First Name");
-                String newTemp = console.next();
+                String newTemp = console.nextLine();
                 DBconnection.executeQuery("UPDATE customers SET first_name = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " First Name has been updated" );
                 break;
             case "2":
                 //Update Last Name
                 System.out.println("Type The New Last Name");
-                newTemp = console.next();
+                newTemp = console.nextLine();
                 DBconnection.executeQuery("UPDATE customers SET last_name = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Last Name has been updated" );
                 break;
             case "3":
                 //Update Street Address
                 System.out.println("Type The New Street Address");
-                newTemp = console.next();
+                newTemp = console.nextLine();
                 DBconnection.executeQuery("UPDATE customers SET st_address = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Street Address has been updated" );
                 break;
@@ -273,7 +273,7 @@ public class Services {
                 System.out.println("The Customer with the id " + choice_ID + " Driver License ID has been updated" );
                 break;
             case "9":
-                System.out.println("Type The New Customer Driver Since Date year-mm-dd");
+                System.out.println("Type The New Customer Driver Since Date (YYYY-MM-DD): ");
                 newTemp = console.next();
                 DBconnection.executeQuery("UPDATE customers SET driver_since = '" + newTemp +"' WHERE customer_id = " + choice_ID + ";");
                 System.out.println("The Customer with the id " + choice_ID + " Driver Since date has been updated" );
@@ -302,7 +302,7 @@ public class Services {
         String end_date=console.nextLine();
         System.out.println("Enter max km: ");
         int max_km=console.nextInt();
-        System.out.println("Enter start_km: ");
+        System.out.println("Enter start km before use: ");
         int start_km=console.nextInt();
         DBconnection.executeQuery("INSERT INTO contracts(renter_id,car_id,start_date,end_date,max_km,start_km) \n VALUES "+
                 "("+renter_id+","+customer_id+",\""+start_date+"\",\""+end_date+"\","+max_km+","+start_km+");");
@@ -366,13 +366,13 @@ public class Services {
         switch (choice) {
             case "1":
                 System.out.println("Type The New Start Date yyyy-mm-dd hh:mm:ss");
-                String newTemp = console.next();
+                String newTemp = console.nextLine();
                 DBconnection.executeQuery("UPDATE contracts SET start_date = '" + newTemp +"' WHERE contract_id = " + choice_ID + ";");
                 System.out.println("The Contract with the id " + choice_ID + " Start Date has been updated" );
                 break;
             case "2":
                 System.out.println("Type The New End Date yyyy-mm-dd hh:mm:ss");
-                newTemp = console.next();
+                newTemp = console.nextLine();
                 DBconnection.executeQuery("UPDATE contracts SET end_date = '" + newTemp +"' WHERE contract_id = " + choice_ID + ";");
                 System.out.println("The Contract with the id " + choice_ID + " End Date has been updated" );
                 break;
@@ -383,7 +383,7 @@ public class Services {
                 System.out.println("The Contract with the id " + choice_ID + " Max kilometers has been updated" );
                 break;
             case "4":
-                System.out.println("Type The New Start km");
+                System.out.println("Type The New Start km before use: ");
                 temp = console.nextInt();
                 DBconnection.executeQuery("UPDATE contracts SET start_km = '" + temp +"' WHERE contract_id = " + choice_ID + ";");
                 System.out.println("The Contract with the id " + choice_ID + " Start kilometers has been updated" );
@@ -453,43 +453,47 @@ public class Services {
         System.out.println("|       1. City               |");
         System.out.println("|       2. Country            |");
         System.out.println("|       3. City & Country     |");
+        System.out.println("|       4. Cancel             |");
         System.out.println("|_____________________________|");
         System.out.println("        Enter number...    ");
-        int choice = console.nextInt();
+        String choice = console.next();
         switch (choice){
-            case 1:
+            case "1":
                 System.out.println( "Type the new City: ");
-                city = console.next();
-                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET city = \"" + city + "\" WHERE zip = " + toUpdate + ";");
+                city = console.nextLine();
+                DBconnection.executeQuery("UPDATE zip_codes " + "SET city = \"" + city + "\" WHERE zip = " + toUpdate + ";");
                 break;
-            case 2:
+            case "2":
                 System.out.println( "Type the new Country: ");
-                country = console.next();
-                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET country = \"" + country + "\" WHERE zip = " + toUpdate + ";");
+                country = console.nextLine();
+                DBconnection.executeQuery("UPDATE zip_codes " + "SET country = \"" + country + "\" WHERE zip = " + toUpdate + ";");
                 break;
-            case 3:
+            case "3":
                 System.out.println( "Type the new City: ");
-                city = console.next();
+                city = console.nextLine();
                 System.out.println( "Type the new Country: ");
-                country = console.next();
-                updated = DBconnection.executeQuery("UPDATE zip_codes " + "SET city = \"" + city + "\", country = \"" + country +
+                country = console.nextLine();
+                DBconnection.executeQuery("UPDATE zip_codes " + "SET city = \"" + city + "\", country = \"" + country +
                                                     "\" WHERE zip = " + toUpdate + ";");
+                break;
+            case "4":
+                System.out.println("No Action Has Been Performed");
                 break;
             default:
                 System.out.println("Wrong input.");
         }
-        if (updated){
-            System.out.println("Zip-Code = " + toUpdate + ", was updated.");
-            ResultSet rs = DBconnection.sendQuery("SELECT * FROM zip_codes WHERE zip = " + toUpdate + ";");
-            try{
-                while(rs.next()){
-                    System.out.println("|ID: " + rs.getString("zip") + "|City: " + rs.getString("city") + "|Country: " +
-                            rs.getString("country"));
-                }
-            }catch(SQLException e){
-                e.printStackTrace();
+
+        System.out.println("Zip-Code = " + toUpdate + ", was updated.");
+        ResultSet rs = DBconnection.sendQuery("SELECT * FROM zip_codes WHERE zip = " + toUpdate + ";");
+        try{
+            while(rs.next()){
+                System.out.println("|ID: " + rs.getString("zip") + "|City: " + rs.getString("city") + "|Country: " +
+                        rs.getString("country"));
             }
+        }catch(SQLException e){
+            e.printStackTrace();
         }
+
 
     }
 
@@ -534,6 +538,7 @@ public class Services {
     public void updateBrands()
     {
         //updates the information in brands through user input and choices
+        String temp;
         displayBrands();
         System.out.println("Choose The ID of the Brand you want to update");
         String choice_ID = console.next();
@@ -544,21 +549,21 @@ public class Services {
         System.out.println("|_____________________________|");
         System.out.println("|                             |");
         System.out.println("|          1. Brand           |");
-        System.out.println("|          2. End Date        |");
-        System.out.println("|          3.Cancel           |");
+        System.out.println("|          2. Model           |");
+        System.out.println("|          3. Cancel          |");
         System.out.println("|_____________________________|");
         String choice_update=console.next();
         switch (choice_update)
         {
             case "1":
                 System.out.println("Enter new brand name: ");
-                String temp=console.next();
-                DBconnection.executeQuery("UPDATE brandModels SET brand="+temp+" WHERE brandModel_id="+choice_ID+";");
+                temp=console.nextLine();
+                DBconnection.executeQuery("UPDATE brandModels SET brand = \"" + temp + "\" WHERE brandModel_id = "+choice_ID+";");
                 break;
             case "2":
                 System.out.println("Enter new model name: ");
-                temp=console.next();
-                DBconnection.executeQuery("UPDATE brandModels SET model="+temp+" WHERE brandModel_id="+choice_ID+";");
+                temp=console.nextLine();
+                DBconnection.executeQuery("UPDATE brandModels SET model = \"" + temp + "\" WHERE brandModel_id = "+choice_ID+";");
                 break;
             case "3":
                 System.out.println("No action has been performed!");
@@ -582,18 +587,15 @@ public class Services {
         String air_con = console.next();
         System.out.println("Type in if the car has Cruise Control (1 for Yes // 0 for No):");
         String cruise_control = console.next();
-        System.out.println("Type in info about seats (number of material): ");
+        System.out.println("Type in info about seats (number or material): ");
         String seats = console.next();
         System.out.println("Type in how much Horse Power the car has: ");
         String hp = console.next();
         DBconnection.executeQuery("INSERT INTO cartypes (car_type, transmission, eng_volume, air_con, cruise_control, seats, hp)\n" +
                                                     "VALUES (\"" + car_type + "\", \"" + transmission + "\", " + eng_volume + ", " + air_con + ", " +
                                                     cruise_control + ", \"" + seats + "\", " + hp + ");");
-        boolean created = true;
-        System.out.println(created);
-        if (created){
-            System.out.println("New Car Type was added to the table.");
-        }
+        System.out.println("New Car Type was added to the table.");
+
     }
     public void displayTypes(){
         ResultSet rs = DBconnection.sendQuery("SELECT * FROM cartypes;");
@@ -629,8 +631,96 @@ public class Services {
         System.out.println("Car Type with ID = " + user_input + " was deleted.");
     }
     public void updateTypes(){
+        String temp;
+        System.out.println("Choose The ID of the Car Type you want to update");
+        displayTypes();
+        String choice_ID = console.next();
+        System.out.println("You Chose To Change "+ choice_ID);
+        System.out.println("|_____________________________|");
+        System.out.println("|    Which Value To Update    |");
+        System.out.println("|_____________________________|");
+        System.out.println("|                             |");
+        System.out.println("|    1. Type                  |");
+        System.out.println("|    2. Transmission Type     |");
+        System.out.println("|    3. Engine Volume         |");
+        System.out.println("|    4. Air Conditioner       |");
+        System.out.println("|    5. Cruise Control        |");
+        System.out.println("|    6. Seats Specifications  |");
+        System.out.println("|    7. Horsepower            |");
+        System.out.println("|    0. Cancel                |");
+        System.out.println("|_____________________________|");
+        System.out.println("           Enter number...    ");
+        String choice = console.next();
+        System.out.println("Your choice was " + choice);
 
+        switch(choice){
+            case "1":
+                System.out.println("Enter new Type: ");
+                temp = console.next();
+                DBconnection.executeQuery("UPDATE cartypes SET car_type = \"" + temp + "\" WHERE carType_id = " + choice_ID + ";");
+                break;
+            case "2":
+                System.out.println("Enter new Transmission Type: ");
+                temp = console.next();
+                DBconnection.executeQuery("UPDATE cartypes SET transmission = \"" + temp + "\" WHERE carType_id = " + choice_ID + ";");
+                break;
+            case "3":
+                System.out.println("Enter new Engine Volume (in cc): ");
+                temp = console.next();
+                DBconnection.executeQuery("UPDATE cartypes SET eng_volume = " + temp + " WHERE carType_id = " + choice_ID + ";");
+                break;
+            case "4":
+                System.out.println("Enter if Air Conditioner is present (1 for Yes // 0 for No): ");
+                temp= console.next();
+                DBconnection.executeQuery("UPDATE cartypes SET air_con = " + temp + " WHERE carType_id = " + choice_ID + ";");
+                break;
+            case "5":
+                System.out.println("Enter if Cruise Control is present (1 for Yes // 0 for No): ");
+                temp= console.next();
+                DBconnection.executeQuery("UPDATE cartypes SET cruise_control = " + temp + " WHERE carType_id = " + choice_ID + ";");
+                break;
+            case "6":
+                System.out.println("Enter new Seats Specifications (number of seats or material): ");
+                temp= console.next();
+                DBconnection.executeQuery("UPDATE cartypes SET seats = \"" + temp + "\" WHERE carType_id = " + choice_ID + ";");
+                break;
+            case "7":
+                System.out.println("Enter new Horsepower: ");
+                temp= console.next();
+                DBconnection.executeQuery("UPDATE cartypes SET hp = " + temp + " WHERE carType_id = " + choice_ID + ";");
+                break;
+            case "0":
+                System.out.println("No Action Has Been Performed");
+                break;
+            default:
+                System.out.println("Wrong input.");
+        }
 
+        System.out.println("Car Type with ID  = " + choice_ID + ", was updated.");
+        ResultSet rs = DBconnection.sendQuery("SELECT * FROM cartypes WHERE carType_id = " + choice_ID + ";");
+
+        try{
+            while(rs.next()){
+                String  str = "|ID: " + rs.getString("carType_id") + "|Car Type: " + rs.getString("car_type") +
+                        "|Transmission: " + rs.getString("transmission") + "|Engine Volume:" + rs.getString("eng_volume");
+                String air_con = rs.getString("air_con");
+                if (air_con.equals("1")){
+                    str = str + "|Air Conditioner: Yes";
+                }else {
+                    str = str + "|Air Conditioner: No";
+                }
+                String cruise_control = rs.getString("cruise_control");
+                if (cruise_control.equals("1")){
+                    str = str + "|Cruise Control: Yes";
+                }else {
+                    str = str + "|Cruise Control: No";
+                }
+                str = str + "|Seats: " + rs.getString("seats") + "|Horse Power: " + rs.getString("hp");
+                System.out.println(str);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
     public void displayOneCar() {
         //displays one specific car which the user choose through console input
