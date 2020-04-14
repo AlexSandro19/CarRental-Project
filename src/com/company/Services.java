@@ -411,11 +411,9 @@ public class Services {
        // if (already_exists){
         //    System.out.println("This Zip-Code already exists.");
         //}else {
-            created = DBconnection.executeQuery("INSERT INTO zip_codes(zip,city,country) VALUES (" + zip + ",\" " + city + "\", \"" + country + "\");");
-       // }
-        if (created){
-            System.out.println("New Zip-Code was added to the table.");
-        }
+        DBconnection.executeQuery("INSERT INTO zip_codes(zip,city,country) VALUES (" + zip + ",\" " + city + "\", \"" + country + "\");");
+        System.out.println("New Zip-Code was added to the table.");
+
 
 
     }

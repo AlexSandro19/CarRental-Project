@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.InputMismatchException;
 
 public class DBconnection {
-        private static String url = "jdbc:mysql://localhost:3306/carrental?characterEncoding=latin1&useConfigs=maxPerformance\n";
+        private static String url = "jdbc:mysql://localhost:3306/carrental?characterEncoding=latin1&useConfigs=maxPerformance\n";  // jar file we used is an older version
         private static String username = "root";
-        private  static String password = "asdfzxcv123";
+        private  static String password = "1234";
 
     public static ResultSet sendQuery(String query) {
 
@@ -30,13 +30,13 @@ public class DBconnection {
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection(url, username, password);
         Statement st = con.createStatement();
-        boolean rs = st.execute(query); // Query is executed.
-         return rs; // The ResultSet is being returned.
-    } catch (SQLException |ClassNotFoundException |InputMismatchException e) {
+        boolean rs = st.execute(query); //
+       return rs; // The ResultSet is being returned.
+    } catch (SQLException |ClassNotFoundException e) {
         e.printStackTrace();
         System.out.println("Error in input for SQL functions!! Try again");
     }
-        return false; // Returns null in case of any exception.
+        return true; // Returns true in case of any exception.
 
     }
 }
